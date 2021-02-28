@@ -40,7 +40,7 @@ SET @ErrorText = 'Failed SELECT from table Order!';
 IF(NOT EXISTS(SELECT 1
     FROM GiftShop.[Order]))
 BEGIN
-    SET @ErrorText = 'Failed SELECT from table Parameter!';
+    SET @ErrorText = 'Failed SELECT from table Order!';
     SET @MaxOrderID = (SELECT NumValue
     FROM GiftShop.Parameter
     WHERE NAME = 'StartOrderID');

@@ -60,14 +60,6 @@ EXEC GiftShop.InsertHistory @SP = @SP,
 -------------------------------------------------------------------------------
 
 -- Check to give a friendly error for RI Issue.
-SET @ErrorText = 'Failed to SELECT from table Employee!';
-IF EXISTS(SELECT 1
-    FROM GiftShop.Employee
-WHERE Email = @EmployeeID)
-BEGIN
-    SET @ErrorText = 'Email = ' + @EmployeeID + ' already is in table Employee! Rasing Error!';
-    RAISERROR(@ErrorText, 16,1);
-END;
 
 SET @ErrorText = 'Failed check for variable @EmployeeID!';
 IF @EmployeeID <= 1000
@@ -77,7 +69,7 @@ BEGIN
 END;
 
 SET @ErrorText = 'Failed INSERT to table Employee!';
-INSERT INTO GiftShop.Customer
+INSERT INTO GiftShop.Employee
     (EmployeeID, ManagerID, TaskID, FirstName, LastName, Title)
 VALUES
     (@EmployeeID, @ManagerID, @TaskID, @FirstName, @LastName, @Title)

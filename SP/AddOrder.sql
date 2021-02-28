@@ -224,10 +224,6 @@ BEGIN
         EXEC GiftShop.InsertHistory @SP = @SP,
         @Status = 'Run',
         @Message = @Message;
-        PRINT @OrderID
-        PRINT @CustomerID
-        PRINT @EmployeeID
-        PRINT @TotalAmount;
 
         SET @ErrorText = 'Failed Calling SP InsertOrder!';
         EXEC GiftShop.InsertOrder @OrderID = @OrderID,

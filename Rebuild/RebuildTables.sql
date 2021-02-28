@@ -73,6 +73,13 @@ SET @Message = 'Completed SP CreateTables';
 RAISERROR(@Message, 0,1) WITH NOWAIT;
 -------------------------------------------------------------------------------
 
+SET @ErrorText = 'Failed Calling SP CreateFKs!';
+
+EXEC GiftShop.CreateFKs;
+
+SET @Message = 'Completed SP CreateFKs';   
+RAISERROR(@Message, 0,1) WITH NOWAIT;
+
 -------------------------------------------------------------------------------
 SET @Message = 'Completed, duration in minutes:  '   
    + CONVERT(VARCHAR(12), CONVERT(DECIMAL(6,2),datediff(mi, @StartTime, getdate())));    

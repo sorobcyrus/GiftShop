@@ -51,14 +51,14 @@ EXEC GiftShop.InsertHistory @SP = @SP,
 SET @ErrorText = 'Failed to SELECT from table Task!';
 IF EXISTS(SELECT 1
     FROM GiftShop.Task
-WHERE [Name] = @Name)
+WHERE TaskID = @TaskID)
 BEGIN
     SET @ErrorText = 'Task = ' + @TaskID + ' already is in table Task! Rasing Error!';
     RAISERROR(@ErrorText, 16,1);
 END;
 
 SET @ErrorText = 'Failed INSERT to table Task!';
-INSERT INTO GiftShop.Customer
+INSERT INTO GiftShop.Task
     (TaskID, [Name], Note)
 VALUES
     (@TaskID, @Name, @Note)
